@@ -82,7 +82,7 @@ Show the tree.
 
 ## Phase 5, your memory, `04-memory/`
 
-**Say:** "Now your memory. This is what makes Claude remember: every time you correct it, the rule lands here at once, and every session reads it back."
+**Say:** "Now your memory. Every time you correct Claude, the rule goes into this file at once, and every session reads it back."
 
 **Build**, with no question:
 
