@@ -4,15 +4,15 @@ Claude starts every chat from zero. This workspace makes it remember: who you ar
 
 It is a small personal brain: a folder of plain markdown files you own, six skills that read and write them, and three hooks that run on their own. Two skills open and close every session; the others bring sources in, answer from your files, turn repeated corrections into rules, and check the whole folder. There is no memory service to pay for and nothing hidden, so you can open and edit every line Claude remembers.
 
-## Start with one line
+## Start in the Claude Desktop app
 
-You need [Claude Code](https://claude.com/claude-code) and git. Paste this in your terminal:
+1. Download [QUICKSTART.md](QUICKSTART.md): on its page, the **Download raw file** button.
+2. Open the Claude Desktop app, click **Code**, and start a session on your Downloads folder, with the **Worktree** button off.
+3. Write: `Install my workspace: follow QUICKSTART.md in my Downloads folder.`
 
-```
-git clone https://github.com/pietroacerbis/claude-personal-memory my-workspace && cd my-workspace && claude "setup"
-```
+Claude checks git and Python, puts the workspace in `~/Documents/claude-workspace` and unhooks it from this repository, so it is yours. Then you open that folder in a new session and write `Good morning Claude, let's set up my workspace.` Claude walks you through seven phases: you, your areas of work, your projects, your goals, your rhythm, your tools and your voice. Every phase says what it builds and why, asks with options you click, builds the file and shows it to you before moving on.
 
-Claude Code opens in the new folder with "setup" already sent. Claude asks once whether you trust the folder, then walks you through seven phases: you, your areas of work, your projects, your goals, your rhythm, your tools and your voice. Every phase says what it builds and why, asks with options you click, builds the file and shows it to you before moving on. At the start it unhooks the folder from this repository and offers to keep a private copy on your GitHub.
+Prefer the terminal? `git clone https://github.com/pietroacerbis/claude-personal-memory claude-workspace && cd claude-workspace && claude "setup"`
 
 ## The daily loop
 
@@ -36,6 +36,7 @@ log.md             what happened, one line per event
 USER.md            who you are and how you want Claude to talk to you
 RHYTHM.md          what comes up on which day
 CLAUDE.md          the rules every session follows
+QUICKSTART.md      the install, in the Claude Desktop app
 SETUP.md           the guided onboarding
 01-workstreams/    the areas you work on every week
 02-projects/       work with a start and an end, from _TEMPLATE/
