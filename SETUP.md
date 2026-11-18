@@ -13,7 +13,7 @@
 Always:
 
 - **Never invent an answer, and never guess one.** A proposal comes from what the user said in this setup or from a source that answers, named in the option: "from your Slack profile". A skipped question leaves a `TODO:` line in the file.
-- **Profiles yes, contents on a yes.** Prefill from what the user's own profiles already say: `gh api user`, their own profile on a connected Slack or Google account, the list of tools this session reaches. Emails, messages, calendar events and files are read only after the user's yes in this setup. What no profile says is asked.
+- **Use what you have, ask what you lack.** Whatever this session can already read about the user, their GitHub profile, a connected Slack, Google or other tool, fills the proposals, each naming its source. What no source says is asked in plain chat, with no proposal.
 - **Check before you ask.** When a phase's file already exists, show it and ask whether to keep it or redo it.
 - **The user's language** from phase 1 for every message. The files are written in the language the user picks.
 - **Run every command yourself.** Ask the user only for answers and clicks.
@@ -134,14 +134,14 @@ and `04-memory/remaining-todos.md` with the sections `## P0, blocks someone`, `#
 
 ## Phase 7 of 8, your tools and your voice
 
-**Check by listing, never by reading.** Name what this session can reach from its own tool list, `claude mcp list`, and the command lines on the path (`gh`, `gws`). Do not call a tool to check it. Compare the list with the tools of phase 2.
+**Check first, ask nothing yet.** Name what this session can reach from its own tool list, `claude mcp list`, and the command lines on the path (`gh`, `gws`), and prove each one answers with one small read. Compare the list with the tools of phase 2.
 
 **Say** which tools are connected and which are missing, in one list. For each missing one, ask: "Connect {tool} now?" Yes, guide me (Recommended), Later. On yes, one step per message, waiting for the user each time:
 
 1. Gmail, Google Calendar, Google Drive, Slack, Notion, Exa and the other connectors claude.ai lists: open https://claude.ai/settings/connectors, click Connect next to the tool, sign in and allow. A connector added now loads in a new session on this folder: say so, and offer to finish this phase there with "continue setup".
 2. A tool claude.ai does not list: open the tool's own MCP page, which you search for and link, and add it with the line it gives, for example `claude mcp add --transport http {name} {url}`.
 
-**Then the voice**, through `distil`, variant `voice`:
+**Then the voice**, through `distil`, variant `voice`. Explain first: "Each voice starts from a preset of base rules tested on months of posts and emails, in `.claude/templates/`. What I learn from your own writing goes on top, and a rule of yours wins over a base rule." A channel left at "Not now" still gets its preset, written into the area that writes it, so drafts follow the base rules until there is material.
 
 - **Gmail connected**: "I can learn how you write emails from the ones you sent. I read up to 30 of your sent emails from the last 90 days and write down the rules, never the emails." Ask: Yes, learn my email voice (Recommended), Not now. On yes, run the outreach channel.
 - **LinkedIn**: "To learn how you write posts, I need your posts. LinkedIn does not let me open your profile." Ask:

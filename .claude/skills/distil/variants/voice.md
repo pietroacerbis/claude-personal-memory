@@ -28,6 +28,8 @@ A rule is something three items or more do, written as an instruction with its c
 - **Words I never use**: what the user corrected out, and what is common in the channel but absent from every item (hashtags, emojis, "excited to announce"), marked `(in none of 6)`.
 - **A correction wins over the material**: written with `(your correction, YYYY-MM-DD)`, and never replaced by a count.
 
+**A new file starts from the preset** `.claude/templates/voice-{channel}-preset.md` when the workspace has it: its `## Base rules` stay as written, and the sections below fill from the material. A rule of the user's wins over a base rule; a base rule the material contradicts is shown at the gate. No preset: leave `## Base rules` empty.
+
 **A re-run merges.** Read the file whole first. The counts of rules the new items show are updated; a new rule enters only at three items or more; a rule the new items contradict is shown at the gate, never changed in silence; a correction stays as written.
 
 ## The file
@@ -41,6 +43,7 @@ A rule is something three items or more do, written as an instruction with its c
 
     # Voice, {channel}
 
+    ## Base rules
     ## How I open
     ## Length
     ## Sentence shape
