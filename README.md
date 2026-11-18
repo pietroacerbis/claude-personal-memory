@@ -74,7 +74,7 @@ This repository is one of three:
 
 This workspace remembers one person. At gaja we build the same thing for a go-to-market team: what your buyers say on calls, what your deals teach, what your best reps do, kept in one brain every rep's Claude reads.
 
-- Pietro Acerbis, pietro@trygaja.com, [LinkedIn](https://www.linkedin.com/in/pietroacerbis-prospeiq/)
+- Pietro Acerbis, pietro@trygaja.com, [LinkedIn](https://www.linkedin.com/in/pietroacerbis-gaja/)
 - [trygaja.com](https://trygaja.com)
 
 MIT licence.
