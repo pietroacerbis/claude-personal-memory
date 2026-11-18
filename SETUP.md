@@ -12,8 +12,8 @@
 
 Always:
 
-- **Never invent an answer, and never guess one.** A proposal comes from what the user said in this setup or from the tool that answers, named in the option: "from your GitHub profile". A skipped question leaves a `TODO:` line in the file.
-- **List, never read.** Reading the user's email, calendar, chat or profile waits for their yes in this setup.
+- **Never invent an answer, and never guess one.** A proposal comes from what the user said in this setup or from a source that answers, named in the option: "from your Slack profile". A skipped question leaves a `TODO:` line in the file.
+- **Profiles yes, contents on a yes.** Prefill from what the user's own profiles already say: `gh api user`, their own profile on a connected Slack or Google account, the list of tools this session reaches. Emails, messages, calendar events and files are read only after the user's yes in this setup. What no profile says is asked.
 - **Check before you ask.** When a phase's file already exists, show it and ask whether to keep it or redo it.
 - **The user's language** from phase 1 for every message. The files are written in the language the user picks.
 - **Run every command yourself.** Ask the user only for answers and clicks.
@@ -42,7 +42,9 @@ Always:
 
 **Explain:** "`USER.md` is your profile. Every session reads it before anything else, so Claude knows who you are and how you want to be treated."
 
-**Ask in plain chat**, no options, one message: "What should I call you, and what is your role, at which company?" When `gh auth status` answers, add: "Your GitHub profile says {gh api user --jq .name}: is that the name to use?" Without GitHub, ask with no proposal. Never propose a name from `git config`: it is often a username.
+**Look the user up first, silently.** Their GitHub profile when `gh auth status` answers (`gh api user`: name, company), their own profile on a connected Slack (name, title) or Google account. Never `git config`: it often holds a username.
+
+**Ask** (one call) with what the profiles say, each option naming its source: "What should I call you?" Pietro, from your GitHub profile (Recommended); and "What is your role, at which company?" COO and co-founder at gaja, from your Slack profile. A question no profile answers is asked in plain chat, with no proposal.
 
 **Ask** (one call): "How should we build your profile?"
 
@@ -51,7 +53,7 @@ Always:
 
 On the preset: copy `.claude/templates/USER-preset.md`, fill name, role, company and language. On from scratch: ask "How should I talk to you?" Short and direct, the answer first (Recommended), Step by step with the reasoning, Short by default, detail when I ask. Then, multi-select: "What annoys you in AI answers?" Long introductions, Hedging and caveats, Jargon, Lists for everything, Closing offers like "let me know if". Build `USER.md` with the sections Role, Language, How to talk to me, Tools I use, How I work.
 
-**Ask in plain chat**, no options: "Which tools do you use every day? Write them in one line, for example: Gmail, Google Calendar, Slack, Notion, HubSpot." Write them under `## Tools I use`: phase 7 connects them.
+**Ask** "Which tools do you use every day?" When this session already reaches some, ask with AskUserQuestion, multi-select, the connected tools as options, each marked "connected", and the user types the rest. With none connected, ask in plain chat: "Write them in one line, for example: Gmail, Google Calendar, Slack, Notion, HubSpot." Write them under `## Tools I use`: phase 7 connects the missing ones.
 
 **Show** the snapshot and the link, then **explain how it grows**, before the confirmation: "This file grows in two ways, whichever start you picked. When you tell me something stable about you, like 'I never take calls on Friday', I write it here in the same turn. When you correct how I work, the rule goes to the mistakes log in your memory, which we build in phase 5. You can also open the file and edit any line yourself."
 
