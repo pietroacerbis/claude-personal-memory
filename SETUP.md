@@ -126,7 +126,7 @@ and `04-memory/remaining-todos.md` with the sections `## P0, blocks someone`, `#
 
 ## Phase 6 of 7, your rhythm, `RHYTHM.md`
 
-**Explain:** "Claude has no alarm clock. Every session reads this file and puts today's rows in front of you, so the routines happen without a scheduler."
+**Explain:** "This file lists what you do with me on which day. Every session reads it and puts today's rows in front of you, and you decide at the open whether to run them first. A task that must run on its own at a fixed hour, with no chat open, is a Claude Code routine on claude.ai instead."
 
 **Ask** (multi-select): "What should come up on its own?" Propose three or four rows drawn from the role, the areas and the goals, for example "Every day: plan the day, three priorities", "Friday: review the week against the goals", "Monday: pipeline review" for a Sales area.
 

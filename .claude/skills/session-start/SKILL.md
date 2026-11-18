@@ -18,7 +18,7 @@ last_updated: 2026-11-17
 
 # session-start
 
-Claude remembers nothing between chats. This workspace does: the open reads it back, so a new chat knows what the last one learned. Every open runs the same stops, whatever the hour.
+The open reads this workspace back, so a new chat starts from what the last one learned. Every open runs the same stops, whatever the hour.
 
 The workspace root is the current working directory, where `USER.md` sits: read every file and run every command from there, never from this skill's folder.
 

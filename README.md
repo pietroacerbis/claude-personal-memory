@@ -1,6 +1,6 @@
 # Claude personal memory
 
-Claude starts every chat from zero. This workspace makes it remember: who you are, how you want it to work, what you corrected last week, what yesterday left open.
+Claude Code already keeps some memory: the `CLAUDE.md` files you write and the notes it saves on its own for each project. This workspace gives it a memory with a shape you design and can read whole: who you are, where you are going this quarter, how you want it to work, what you corrected last week, what yesterday left open.
 
 It is a small personal brain: a folder of plain markdown files you own, six skills that read and write them, and three hooks that run on their own. Two skills open and close every session; the others bring sources in, answer from your files, turn repeated corrections into rules, and check the whole folder. There is no memory service to pay for and nothing hidden, so you can open and edit every line Claude remembers.
 
@@ -57,9 +57,9 @@ SETUP.md           the guided onboarding
 - **Every session has its record.** The journal of each day keeps one block per chat: what it did, what it decided, what it left for tomorrow.
 - **Git keeps the history.** You can see what Claude learned last month, and undo it.
 
-## A rhythm instead of routines
+## Your rhythm
 
-Claude has no alarm clock. `RHYTHM.md` is a table of what you run on which day: plan the day every morning, review the week on Friday, check the projects on the last Friday of the month. Every session reads today's rows and asks whether to run them first, so the routine happens because you opened a chat, with no scheduler to set up.
+`RHYTHM.md` is a table of what you do with Claude on which day: plan the day every morning, review the week on Friday, check the projects on the last Friday of the month. Every session reads today's rows and asks whether to run them first. A task that must run on its own at a fixed hour, with no chat open, belongs to a Claude Code routine on claude.ai instead: `RHYTHM.md` holds the work you do together when you open a chat.
 
 ## Rewrite CLAUDE.md every six months
 
