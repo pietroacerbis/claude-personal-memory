@@ -64,7 +64,7 @@ Claude Code, in any of its apps: the skills read and write this folder. On claud
 This repository is one of three:
 
 - [How to build a skill](https://github.com/pietroacerbis/how-to-build-a-skill): the guide, the format, a template, and two skills that create and review skills.
-- [Claude Code plugins](https://github.com/pietroacerbis/claude-code-plugins): the plugins we use, and others worth trying, by category.
+- [Claude Code daily](https://github.com/pietroacerbis/claude-code-daily): the Claude Code tools I use every day, by category, with the install lines.
 - Claude personal memory: this one.
 
 <!-- CTA -->
