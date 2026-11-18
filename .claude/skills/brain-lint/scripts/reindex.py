@@ -69,6 +69,9 @@ def collect(base: Path) -> dict:
     for name in TOP_FILES:
         if (base / name).is_file():
             groups[""].append(name)
+    for f in sorted(base.glob("*.md")):
+        if f.name not in TOP_FILES and f.name not in SKIP_FILES:
+            groups[""].append(f.name)
     for dirpath, dirnames, filenames in os.walk(base):
         rel_dir = Path(dirpath).relative_to(base)
         dirnames[:] = sorted(d for d in dirnames if d not in SKIP_DIRS and not d.startswith("."))
