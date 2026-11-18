@@ -41,7 +41,9 @@ Read back what this chat did: files written, decisions taken, what stayed open. 
 | The decision is about | It goes to |
 |---|---|
 | a project | that project's `history.md`, one dated line, and its `latest.md` rewritten |
+| several projects, or where the user is going | a file `04-memory/decisions/YYYY-MM-DD-{slug}.md` in the shape of `04-memory/decisions/README.md`, a line at the top of `## Decisions` in `04-memory/MEMORY.md`, and a line in `log.md` |
 | how the user wants Claude to work | `04-memory/MEMORY.md`, `## Mistakes log` or `## Recent learnings` |
+| a stable fact about the user: role, tools, how they work | `USER.md`, in the section it belongs to |
 | anything else | the journal block only |
 
 A correction should already be in `MEMORY.md` from the moment it happened. Here you check that it landed, and write it only when it did not.

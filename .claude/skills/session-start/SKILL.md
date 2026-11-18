@@ -45,12 +45,12 @@ Five reads, in this order, each one bounded:
 | # | File | What to take |
 |---|---|---|
 | 1 | `USER.md` | how the user wants to be spoken to |
-| 2 | `04-memory/MEMORY.md` | the whole file: active work, the mistakes log, recent learnings |
+| 2 | `04-memory/MEMORY.md` | the whole file: quarter goals, roadmap, active work, decisions, the mistakes log, recent learnings |
 | 3 | today's journal | `## Carryover in` and the other `## Session` blocks still open |
 | 4 | `RHYTHM.md` | the rows whose `Day` is today's weekday, or `daily` |
 | 5 | `02-projects/*/latest.md` | only the project the subject names |
 
-A file missing is a line in the brief, never a reason to stop.
+A file missing is a line in the brief, never a reason to stop. When the open hook already handed you rows 1 to 4, in a block that starts with "Memory loaded at the open", take them from there and read only what it lacks.
 
 ### Stop 3, brief
 
@@ -59,6 +59,7 @@ At most eight lines, in the user's language:
 - the session number, and the other sessions still open today
 - the carryover lines that bear on this subject
 - one mistakes-log row, only when its trigger matches the subject
+- the quarter goal the subject moves, when it moves one
 - today's rhythm rows, as a question: "Today is Friday: shall we run the weekly review first?"
 - where the named project stands, from its `latest.md`
 

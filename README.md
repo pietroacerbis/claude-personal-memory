@@ -2,22 +2,28 @@
 
 Claude starts every chat from zero. This workspace makes it remember: who you are, how you want it to work, what you corrected last week, what yesterday left open.
 
-It is a folder of plain markdown files you own, and two skills: one reads the files back when a session opens, the other writes them when it closes. There is no memory service to pay for and nothing hidden, so you can open and edit every line Claude remembers.
+It is a small personal brain: a folder of plain markdown files you own, six skills that read and write them, and three hooks that run on their own. Two skills open and close every session; the others bring sources in, answer from your files, turn repeated corrections into rules, and check the whole folder. There is no memory service to pay for and nothing hidden, so you can open and edit every line Claude remembers.
 
-## Start in three steps
+## Start with one line
 
-1. Click **Use this template** and create a **private** repository. Your notes and projects will live here.
-2. Clone it and open the folder in Claude Code: the terminal, VS Code, JetBrains or the desktop app.
-3. Type `setup`.
+You need [Claude Code](https://claude.com/claude-code) and git. Paste this in your terminal:
 
-Claude then walks you through nine short phases, about fifteen minutes. It says what it is about to build, asks with options you click, and builds one file at a time. You end with a profile, a memory, your areas of work, your first project and your weekly rhythm.
+```
+git clone https://github.com/pietroacerbis/claude-personal-memory my-workspace && cd my-workspace && claude "setup"
+```
+
+Claude Code opens in the new folder with "setup" already sent. Claude asks once whether you trust the folder, then walks you through seven phases: you, your areas of work, your projects, your goals, your rhythm, your tools and your voice. Every phase says what it builds and why, asks with options you click, builds the file and shows it to you before moving on. At the start it unhooks the folder from this repository and offers to keep a private copy on your GitHub.
 
 ## The daily loop
 
 | When | You say | What happens |
 |---|---|---|
-| a chat opens | "good morning" | `session-start` claims a block in today's journal, reads your profile, your memory, yesterday's carryover and today's rhythm, and briefs you in eight lines |
-| you correct Claude | "no, always do X" | the rule lands in the mistakes log of `MEMORY.md` on the spot, and every later session reads it |
+| a chat opens | "good morning" | `session-start` claims a block in today's journal and briefs you in eight lines: yesterday's carryover, today's rhythm, the goal the work moves. A hook has already handed Claude your profile and your memory |
+| you hand over a source | "ingest this call" | `ingest` keeps the raw in `06-sources/raw/` and updates the pages it changes, after your yes |
+| you ask | "what did we decide on pricing?" | `query` answers from your files and names each one |
+| you correct Claude | "no, always do X" | the rule lands in the mistakes log of `MEMORY.md` on the spot; a fact about you lands in `USER.md` |
+| once a week | "distil" | `distil` merges repeated corrections, writes what worked into your learnings, and keeps your writing voice current |
+| once a week | "lint" | `brain-lint` finds broken links, a stale index and sections over their cap, and fixes them on your yes |
 | the work ends | "that's it for today" | `session-end` writes what was done, decided and left open, carries it into tomorrow's journal, and shows you every write before it happens |
 
 Several chats can run on the same day: each one claims its own numbered block, so two sessions never write over each other.
@@ -25,6 +31,8 @@ Several chats can run on the same day: each one claims its own numbered block, s
 ## What is inside
 
 ```
+index.md           every file with its description, rebuilt after every write
+log.md             what happened, one line per event
 USER.md            who you are and how you want Claude to talk to you
 RHYTHM.md          what comes up on which day
 CLAUDE.md          the rules every session follows
@@ -32,13 +40,14 @@ SETUP.md           the guided onboarding
 01-workstreams/    the areas you work on every week
 02-projects/       work with a start and an end, from _TEMPLATE/
 03-learning/       what you are learning
-04-memory/         MEMORY.md, the day journals, the todos, the archive
+04-memory/         MEMORY.md, decisions/, the day journals, the todos, the archive
 05-inbox/          what you captured and have not placed yet
 06-sources/        raw material, kept as it came
-.claude/skills/    session-start and session-end
+.claude/skills/    session-start, session-end, ingest, query, distil, brain-lint
+.claude/hooks/     the memory at every open, no key ever written into a file
 ```
 
-`USER.md`, `RHYTHM.md` and `04-memory/MEMORY.md` do not exist until you run `setup`, which writes them from your answers.
+`USER.md`, `RHYTHM.md` and `04-memory/MEMORY.md` do not exist until you run `setup`, which writes them from your answers. Three hooks in `.claude/settings.json` run on their own: they hand Claude your memory at every open, refuse a write that carries a key, and rebuild `index.md` after every write.
 
 ## Why files
 

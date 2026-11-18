@@ -1,44 +1,51 @@
 # SETUP, the guided onboarding
 
-**For Claude.** You are here because `USER.md` is missing at the root, or because the user said "setup". You build their workspace with them, one piece at a time, in this one conversation. About fifteen minutes.
+**For Claude.** You are here because `USER.md` is missing at the root, or because the user said "setup". You build their workspace with them, one phase at a time, in this one conversation.
 
 ## How every phase runs
 
-1. **Say what you are about to build, and why, in one or two plain lines.** Then ask.
-2. **Ask with AskUserQuestion.** Two questions at most per message. Proposed answers are the options, your recommendation first and marked "(Recommended)". The user can always type their own.
-3. **Build right after the answer**, and show the file as a link they can click. Then move to the next phase in the same message.
-4. **Never invent an answer.** A skipped question leaves a `TODO` line in the file, and the closing summary lists it.
-5. **Check before you ask.** When a phase's file already exists, show it and ask whether to keep it or redo it.
-6. **The user's language.** Ask in phase 1, then run everything in it. The files stay in the language the user picks.
-7. **Run every command yourself.** Ask the user only for answers and clicks.
+1. **Where we are.** Open the phase with its line: "Phase 3 of 7, your areas of work".
+2. **Explain.** What this piece is, what it is for, and what Claude does with it later, in two to four plain lines, with an example tied to the user's role.
+3. **Propose and ask.** Ask with AskUserQuestion: proposed answers are the options, drawn from what the user already told you, your recommendation first and marked "(Recommended)". Two questions at most per call. The user can always type their own.
+4. **Build and show.** Write the file right after the answer, show its content in chat, and link it.
+5. **Confirm.** Ask with AskUserQuestion: "Does this look right?" Looks right, next phase (Recommended), Change something. Move on only after the answer.
+
+Always:
+
+- **Never invent an answer.** A skipped question leaves a `TODO:` line in the file.
+- **Check before you ask.** When a phase's file already exists, show it and ask whether to keep it or redo it.
+- **The user's language** from phase 1 for every message. The files are written in the language the user picks.
+- **Run every command yourself.** Ask the user only for answers and clicks.
 
 ---
 
-## Phase 1, welcome
+## Phase 1 of 7, welcome
 
-**Check.** `git remote -v`. When the remote is a public GitHub repository (`gh repo view --json visibility`), warn first:
+**Check.** `git remote get-url origin`. When it points to `pietroacerbis/claude-personal-memory`, this folder is still tied to the kit: run `git remote remove origin`. When `gh auth status` answers, offer later in this phase to create the user's own private copy. When the remote is the user's own and `gh repo view --json visibility` says public, warn: "Your copy on GitHub is public, and this folder will hold your notes. I recommend making it private: Settings, Danger zone, Change visibility."
 
-> "Before we start: this workspace will hold your notes, your projects and how you like to work. Your copy on GitHub is public. I recommend making it private: Settings, Danger zone, Change visibility."
+**Say**, short:
 
-**Say:**
+> "Welcome. In seven short phases we build your workspace, one file at a time:
+> 1. Welcome
+> 2. You: your profile
+> 3. Your areas of work
+> 4. Your projects
+> 5. Your goals and your memory
+> 6. Your rhythm
+> 7. Your tools and your voice"
 
-> "Welcome. In the next fifteen minutes we build your workspace: a profile Claude reads at every session, a memory that keeps your corrections, a journal per day, your areas of work, your projects and your weekly rhythm. Everything is plain files in this folder, and you own them. I ask, you answer, I build."
+**Ask** (one call): "Which language should we use?" English (Recommended), Italiano, Español, Français. With `gh` signed in, a second question: "Keep a private copy of this workspace on your GitHub?" Yes, create it (Recommended), Not now. On yes: `gh repo create {folder-name} --private --source . --push`.
 
-**Ask** (one call, two questions):
+## Phase 2 of 7, you, `USER.md`
 
-1. "Which language should we use?" English (Recommended), Italiano, Español, Français.
-2. "Ready to start?" Let's go (Recommended), Show me what you will create first.
+**Explain:** "`USER.md` is your profile. Every session reads it before anything else, so Claude knows who you are and how you want to be treated."
 
-When they ask to see first, list the files of phases 2 to 7 in one table, then ask again.
+**Ask** (AskUserQuestion, two calls):
 
-## Phase 2, you, `USER.md`
+1. "What should I call you?" (offer the name from `gh api user --jq .name` or `git config user.name`) and "What is your role, and at which company?"
+2. "How should I talk to you?" Short and direct, the answer first (Recommended), Step by step with the reasoning, Short by default, detail when I ask. Then, multi-select: "What annoys you in AI answers?" Long introductions, Hedging and caveats, Jargon, Lists for everything, Closing offers like "let me know if".
 
-**Say:** "First your profile. Every session reads it before anything else, so this is where you tell Claude how you want to be treated."
-
-**Ask** (two calls):
-
-1. "What should I call you?" and "What is your role, and at which company?" Offer the name from `gh api user --jq .name` or `git config user.name` when one answers.
-2. "How should I talk to you?" Short and direct, the answer first (Recommended), Explain the reasoning step by step, Mixed: short by default, detail when I ask. Then, multi-select: "What annoys you in AI answers?" Long introductions, Hedging and caveats, Jargon, Lists for everything, Emojis, Closing offers like "let me know if...".
+**Ask in plain chat**, no options: "Which tools do you use every day? Write them in one line, for example: Gmail, Google Calendar, Slack, Notion, HubSpot." Keep the list: phase 7 connects them.
 
 **Build** `USER.md`:
 
@@ -54,44 +61,52 @@ When they ask to see first, list the files of phases 2 to 7 in one table, then a
     - {the style picked, as a rule}
     - Never: {each annoyance picked, one line each}
 
+    ## Tools I use
+    {the tools, one per line}
+
     ## How I work
-    TODO: what I want Claude to know about how I work. It fills in as we go.
+    Filled as we work: what Claude learns about me that stays true.
 
-## Phase 3, your areas of work, `01-workstreams/`
+**Then explain how it grows:** "This file grows in two ways. When you tell me something stable about you, like 'I never take calls on Friday', I write it here in the same turn. When you correct how I work, the rule goes to the mistakes log in your memory, which we build in phase 5. You can also open this file and edit it yourself."
 
-**Say:** "Now the areas you come back to every week, with no end date. Each one gets a folder with the same shape, so you always know where a file goes."
+## Phase 3 of 7, your areas of work, `01-workstreams/`
 
-**Ask:** "Which areas do you work on every week?" Multi-select. Propose four from the role of phase 2, for example for a founder: Sales, Product, Fundraising, Content. The user can add their own.
+**Explain:** "An area is work that comes back every week and never ends, like sales. Each area gets a folder with the same shape: `01-knowledge` for the rules and facts of that area, `02-artifacts` for what you produce, `03-archive` for what you no longer use. So Claude always knows where to read and where to write."
 
-**Build**, for each area, `01-workstreams/{area}/` with:
+**Ask** (multi-select, at most four picked): "Which areas do you work on every week?" Propose four from the role, each with one line on what it would hold. For a COO of a startup: Operations (processes, suppliers, internal tools), Hiring (job descriptions, candidates, interview notes), Sales (call notes, account research, outreach drafts), Content (posts, newsletters, event material). More than four picked: ask which four to keep.
 
-- `README.md`: what the area is for, in one line, and its folders.
-- `01-knowledge/`: what governs this area: notes, references, the facts Claude needs here.
-- `02-artifacts/`: what the area produced.
-- `03-archive/`: what retired.
+**Build**, for each area, `01-workstreams/{area}/` with `README.md` (what the area is for in one line, and its three folders), `01-knowledge/`, `02-artifacts/`, `03-archive/`, each holding an empty `.gitkeep` so git keeps it. Show the tree.
 
-Show the tree.
+## Phase 4 of 7, your projects, `02-projects/`
 
-## Phase 4, your projects, `02-projects/`
+**Explain:** "Projects are different from areas: they start and they end. Each one gets a `map.md` with its plan, a `latest.md` that says where it stands, and a `history.md` with its decisions. Claude opens `latest.md` first when you name the project."
 
-**Say:** "Projects are different: they start and they end. Each one has a map with its plan, a `latest.md` that says where it stands, and a `history.md` with its decisions. Let's set up the one that matters most right now."
+**Ask** (multi-select, two or three picked): "Which projects matter most right now?" Propose three from the role and the areas, each with one line. Then, for each project picked, two calls. First: "What does it produce, and what proves it is done?" with two proposals drawn from its name and the role, for example "a playbook the new reps use from their first day"; and "When is it done?" with a date one month out (Recommended), the end of the quarter, a date the user types. Second: "Why now?" with two proposals drawn from the role and the user's own words as the option to type.
 
-**Ask:** "What is the project that matters most right now?" free text, then "When is it done?" with a proposed date one month out, and "Why now?" free text. Two calls.
+**Build** `02-projects/{slug}/` as a copy of `02-projects/_TEMPLATE/`, with the head of `map.md` filled from the answers, `latest.md` saying the project opened today, and the first line of `history.md`.
 
-**Build** `02-projects/{slug}/` as a copy of `02-projects/_TEMPLATE/`, with the head of `map.md` filled from the answers, `latest.md` saying the project opened today, and the first line of `history.md`. Then ask whether there is a second project; build it the same way, or move on.
+## Phase 5 of 7, your goals and your memory, `04-memory/MEMORY.md`
 
-## Phase 5, your memory, `04-memory/`
+**Explain:** "`MEMORY.md` is what Claude reads at every open, after your profile: where you are going this quarter, the steps to get there, and everything you taught it."
 
-**Say:** "Now your memory. Every time you correct Claude, the rule goes into this file at once, and every session reads it back."
+**Ask** (multi-select): "What are your goals for this quarter?" Propose three from the role and the areas, each written with its measure, for example "Close 10 new customers". The user can type their own. Then one call per goal: "How do we measure it?" with two proposals and the user's own, and "By when?" with the end of the quarter (Recommended) or a date the user types.
 
-**Build**, with no question:
+**Propose the roadmap** from the role and the goals: for each month left in the quarter, the step toward each goal, one line each. Ask: "Keep this roadmap?" Keep it (Recommended), Change some steps.
 
-`04-memory/MEMORY.md`:
+**Build** `04-memory/MEMORY.md`:
 
     # MEMORY, {name}
 
+    ## Quarter goals
+    - {goal}: {measure}, by {YYYY-MM-DD}
+
+    ## Roadmap
+    - {YYYY-MM}: {step}
+
     ## Active work
     - {each project of phase 4, one line, with its link}
+
+    ## Decisions
 
     ## Mistakes log
     | Rule | When it applies |
@@ -99,21 +114,21 @@ Show the tree.
 
     ## Recent learnings
 
-`04-memory/remaining-todos.md`:
+and `04-memory/remaining-todos.md` with the sections `## P0, blocks someone`, `## P1, next`, `## P2, backlog`.
 
-    # Todos
+**Then explain how the rest fills**, as this table:
 
-    ## P0, blocks someone
-    ## P1, next
-    ## P2, backlog
+| Section | Fills when |
+|---|---|
+| Decisions | a session decides something that reaches across projects: `session-end` writes a file in `04-memory/decisions/` and a line here. Say "write this down as a decision" to do it on the spot |
+| Mistakes log | the moment you correct me: the rule and when it applies, in the same turn |
+| Recent learnings | once a week, `distil` reads the journals and writes what worked and what you repeated |
 
-**Say:** "The mistakes log starts empty. The first time you correct me, try it: say 'remember this' and watch the row appear."
+## Phase 6 of 7, your rhythm, `RHYTHM.md`
 
-## Phase 6, your rhythm, `RHYTHM.md`
+**Explain:** "Claude has no alarm clock. Every session reads this file and puts today's rows in front of you, so the routines happen without a scheduler."
 
-**Say:** "Claude has no alarm clock. Instead, every session reads your rhythm and puts today's rows in front of you, so the routines happen without a scheduler."
-
-**Ask:** "What should come up on its own?" Multi-select: Plan the day, every day (Recommended), Plan the week on Monday, Review the week on Friday, Clear the inbox on Wednesday, Review the projects on the last Friday of the month. The user can add their own.
+**Ask** (multi-select): "What should come up on its own?" Propose three or four rows drawn from the role, the areas and the goals, for example "Every day: plan the day, three priorities", "Friday: review the week against the goals", "Monday: pipeline review" for a Sales area.
 
 **Build** `RHYTHM.md`:
 
@@ -125,24 +140,19 @@ Show the tree.
     |---|---|---|
     | {day} | {what} | {the prompt or the skill to run} |
 
-## Phase 7, the rules, `CLAUDE.md`
+## Phase 7 of 7, your tools and your voice
 
-**Say:** "Last, the rules every session follows. I'll show you the ones in `CLAUDE.md`; keep them, or tell me what to change."
+**Check first, ask nothing yet.** List what this session can already reach: the connectors and MCP servers among your tools, `claude mcp list`, and the command lines on the path (`gh`, `gws`). Compare it with the tools of phase 2.
 
-Show the section titles of `CLAUDE.md` in one list, and ask: "Keep these rules?" Keep them (Recommended), Change some. On a change, edit that rule only, with the user's words.
+**Say** which tools are connected and which are missing, in one list. For each missing one, ask: "Connect {tool} now?" Yes, guide me (Recommended), Later. On yes, one step per message, waiting for the user each time:
 
-Then write the rewrite date into `CLAUDE.md`: six months from today. **Say:** "On that date we delete these rules and write them again from scratch. Boris Cherny, who created Claude Code, tells developers to delete old instructions regularly, because newer models no longer need many of them."
+1. Gmail, Google Calendar, Google Drive, Slack, Notion and the other connectors claude.ai lists: open https://claude.ai/settings/connectors, click Connect next to the tool, sign in and allow. Then type `/mcp` here and check the tool shows as connected.
+2. A tool claude.ai does not list: open the tool's own MCP page, which you search for and link, and add it with the line it gives, for example `claude mcp add --transport http {name} {url}`.
+3. After each one, prove it works with one read, for example the subject of the newest email. A tool that does not answer stays on the list for later.
 
-## Phase 8, the first session
+**Then the voice**, through `distil`, variant `voice`:
 
-**Say:** "Your workspace is ready. Now the loop you will use every day."
+- **Gmail connected**: "I can learn how you write emails from the ones you sent. I read up to 30 of your sent emails from the last 90 days and write down the rules, never the emails." Ask: Yes, learn my email voice (Recommended), Not now. On yes, run the outreach channel.
+- **LinkedIn**: "To learn how you write posts, I need your posts. LinkedIn does not let me read your profile, so either paste five or more posts here, or download your data (LinkedIn, Settings, Data privacy, Get a copy of your data, Posts) and drop the file into `06-sources/raw/`." Ask: I'll paste posts, I'll drop the export, Not now. Run the content channel on what arrives.
 
-Run `session-start` with the workstream `onboarding`. Its brief is the proof that the memory is read back.
-
-**Say:**
-
-> "That's the loop. Open every chat with 'good morning' and Claude reads your memory. Close it with 'that's it for today' and Claude writes what happened and what tomorrow needs. When I get something wrong, correct me: the rule lands in your memory on the spot."
-
-## Phase 9, done
-
-List every file built, as links, and every `TODO` left by a skipped question. Then close the onboarding session with `session-end`.
+**Close**, in three lines: write the rewrite date into `CLAUDE.md`, six months from today, and add one line to `log.md`: `{YYYY-MM-DD} | [workspace] workspace set up: {n} areas, {n} projects, {n} goals -> USER.md`. Then say: "Your workspace is ready. Open every chat with 'good morning' and close it with 'that's it for today'. On {rewrite date} we write the rules in `CLAUDE.md` again from scratch, since newer models need fewer of them." List every `TODO:` left by a skipped question, if any.
