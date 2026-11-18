@@ -8,6 +8,7 @@ Opened at stop 0 when the user asks Claude to learn how they write, hands over e
 |---|---|---|
 | Gmail | outreach | whichever Gmail tool the session has. A connector or MCP: search threads with `in:sent newer_than:90d`, then read each one. The `gws` command line: `gws gmail users messages list --params '{"userId":"me","q":"in:sent newer_than:90d","maxResults":60}'`, then `gws gmail +read --id ID --headers` |
 | LinkedIn export | content | `Shares.csv` from the LinkedIn data export, dropped in `06-sources/raw/`: `python3 ${CLAUDE_SKILL_DIR}/scripts/linkedin_posts.py 06-sources/raw/Shares.csv` |
+| Exa, connected | content | search the web for the user's public LinkedIn posts by name and profile link, `linkedin.com/posts` only; keep only posts the user wrote, and say how many were found, since search finds the indexed ones, not always all |
 | pasted in chat | either | each post or email the user pastes is one item |
 | corrected drafts | either | a draft Claude wrote that the user changed, in this chat or in a journal since the last voice run, `python3 ${CLAUDE_SKILL_DIR}/scripts/journals.py voice`. The user's version is the item; the change is a correction |
 

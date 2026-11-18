@@ -53,11 +53,17 @@ The second line unhooks the folder from the kit, so it is the user's own. The se
 
 ### A4. Open it
 
-The user opens the workspace in a new session: you cannot open it for them.
+The user opens the workspace in a new session: you cannot open it for them. Say the steps as a numbered list, one action per line.
 
 **Say**, when A2 installed nothing:
 
-> "Done, your workspace is on your computer! Now open it in a new session: press Cmd+N. In the row under the prompt box, choose the folder claude-workspace in your Documents folder, and check that the Worktree button is off. If the app asks whether you trust the folder, say yes. Then paste this:
+> "Done, your workspace is on your computer! Now open it in a new session:
+>
+> 1. Press **Cmd+N** for a new session.
+> 2. Under the prompt box, click the folder name and choose **Documents**, then **claude-workspace**.
+> 3. Check that the **Worktree** button is off.
+> 4. If the app asks whether you trust the folder, click **Yes**.
+> 5. Paste this and send it:
 >
 >     Good morning Claude, let's set up my workspace.
 >
@@ -65,7 +71,15 @@ The user opens the workspace in a new session: you cannot open it for them.
 
 **Say**, when A2 installed something:
 
-> "Done, your workspace is on your computer! One restart first, so the app sees what we just installed: quit the Claude app completely with Cmd+Q, and open it again. Then go to the Code tab and start a new session with Cmd+N. In the row under the prompt box, choose the folder claude-workspace in your Documents folder, and check that the Worktree button is off. If the app asks whether you trust the folder, say yes. Then paste this:
+> "Done, your workspace is on your computer! One restart first, so the app sees what we just installed:
+>
+> 1. Quit the Claude app completely with **Cmd+Q**, and open it again.
+> 2. Click **Code**.
+> 3. Press **Cmd+N** for a new session.
+> 4. Under the prompt box, click the folder name and choose **Documents**, then **claude-workspace**.
+> 5. Check that the **Worktree** button is off.
+> 6. If the app asks whether you trust the folder, click **Yes**.
+> 7. Paste this and send it:
 >
 >     Good morning Claude, let's set up my workspace.
 >
@@ -73,4 +87,4 @@ The user opens the workspace in a new session: you cannot open it for them.
 
 ## Part B, with Claude
 
-In the new session, `USER.md` is missing, so `CLAUDE.md` sends Claude to [SETUP.md](SETUP.md), the guided onboarding in seven phases.
+In the new session, `USER.md` is missing, so `CLAUDE.md` sends Claude to [SETUP.md](SETUP.md), the guided onboarding in eight phases.

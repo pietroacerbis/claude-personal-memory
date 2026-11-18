@@ -10,7 +10,7 @@ It is a small personal brain: a folder of plain markdown files you own, six skil
 2. Open the Claude Desktop app, click **Code**, and start a session on your Downloads folder, with the **Worktree** button off.
 3. Write: `Install my workspace: follow QUICKSTART.md in my Downloads folder.`
 
-Claude checks git and Python, puts the workspace in `~/Documents/claude-workspace` and unhooks it from this repository, so it is yours. Then you open that folder in a new session and write `Good morning Claude, let's set up my workspace.` Claude walks you through seven phases: you, your areas of work, your projects, your goals, your rhythm, your tools and your voice. Every phase says what it builds and why, asks with options you click, builds the file and shows it to you before moving on.
+Claude checks git and Python, puts the workspace in `~/Documents/claude-workspace` and unhooks it from this repository, so it is yours. Then you open that folder in a new session and write `Good morning Claude, let's set up my workspace.` Claude walks you through eight phases: you, your areas of work, your projects, your goals, your rhythm, your tools and your voice, then what is installed and how to bring in your existing projects and folders. Every phase says what it builds and why, asks with options you click, builds the file and shows it to you before moving on.
 
 Prefer the terminal? `git clone https://github.com/pietroacerbis/claude-personal-memory claude-workspace && cd claude-workspace && claude "setup"`
 
