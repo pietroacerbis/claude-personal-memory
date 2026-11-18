@@ -72,20 +72,26 @@ Claude Code, in any of its apps: the skills read and write this folder. On claud
 
 ## The Skill kit
 
-This repository is one of three:
+This repository is one of four:
 
 - [How to build a skill](https://github.com/pietroacerbis/how-to-build-a-skill): the guide, the format, a template, and two skills that create and review skills.
 - [Claude Code daily](https://github.com/pietroacerbis/claude-code-daily): the Claude Code tools I use every day, by category, with the install lines.
 - Claude personal memory: this one.
+- [Claude antislop](https://github.com/pietroacerbis/claude-antislop): keeps the tells of AI writing out of what Claude writes, with a list of 61 patterns, hooks that check every file and reply, and a skill that rewrites a draft until it is clean.
 
 <!-- CTA -->
 ---
 
 ## Want the same memory for your whole team?
 
-This workspace remembers one person. At gaja we build the same thing for a go-to-market team: what your buyers say on calls, what your deals teach, what your best reps do, kept in one brain every rep's Claude reads.
+At gaja we build two things for go-to-market teams:
 
-- Pietro Acerbis, pietro@trygaja.com, [LinkedIn](https://www.linkedin.com/in/pietroacerbis-gaja/)
-- [trygaja.com](https://trygaja.com)
+- **The knowledge your Claude reads**: your ICP, your deal stages, your objections, your voice, built from your calls, docs, tools and team.
+- **The shared skills your team runs**: written on the processes you already follow, deployed to the whole team, all reading the same knowledge.
+
+Get in touch:
+
+- Pietro Acerbis, Founder at gaja: pietro@trygaja.com, [LinkedIn](https://www.linkedin.com/in/pietroacerbis-gaja/)
+- gaja: [trygaja.com](https://trygaja.com), [LinkedIn](https://www.linkedin.com/company/gaja-brain/)
 
 MIT licence.
