@@ -53,7 +53,7 @@ The second line unhooks the folder from the kit, so it is the user's own. The se
 
 ### A4. Open it
 
-The user opens the workspace in a new session: you cannot open it for them. Say the steps as a numbered list, one action per line.
+The user opens the workspace in a new session: you cannot open it for them. Say the steps as a numbered list, one action per line, then the line to paste alone in a fenced code block, so the app shows its copy button.
 
 **Say**, when A2 installed nothing:
 
@@ -63,11 +63,13 @@ The user opens the workspace in a new session: you cannot open it for them. Say 
 > 2. Under the prompt box, click the folder name and choose **Documents**, then **claude-workspace**.
 > 3. Check that the **Worktree** button is off.
 > 4. If the app asks whether you trust the folder, click **Yes**.
-> 5. Paste this and send it:
->
->     Good morning Claude, let's set up my workspace.
->
-> See you there!"
+> 5. Copy this line, paste it and send it:"
+
+```
+Good morning Claude, let's set up my workspace.
+```
+
+> "See you there!"
 
 **Say**, when A2 installed something:
 
@@ -79,12 +81,14 @@ The user opens the workspace in a new session: you cannot open it for them. Say 
 > 4. Under the prompt box, click the folder name and choose **Documents**, then **claude-workspace**.
 > 5. Check that the **Worktree** button is off.
 > 6. If the app asks whether you trust the folder, click **Yes**.
-> 7. Paste this and send it:
->
->     Good morning Claude, let's set up my workspace.
->
-> See you there!"
+> 7. Copy this line, paste it and send it:"
+
+```
+Good morning Claude, let's set up my workspace.
+```
+
+> "See you there!"
 
 ## Part B, with Claude
 
-In the new session, `USER.md` is missing, so `CLAUDE.md` sends Claude to [SETUP.md](SETUP.md), the guided onboarding in eight phases.
+In the new session, `USER.md` is missing, so `CLAUDE.md` sends Claude to [SETUP.md](SETUP.md), the guided onboarding in eight phases, the last one the tour of [TOUR.md](TOUR.md).

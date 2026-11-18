@@ -6,7 +6,7 @@ Every area has the same shape, built by `SETUP.md`:
 
 | Folder | Holds |
 |---|---|
-| `01-knowledge/` | what governs the area: your notes, references, the facts Claude needs here |
+| `01-knowledge/` | what governs the area: `context.md` from the setup, then your notes, references and the facts Claude needs here |
 | `02-artifacts/` | what the area produced |
 | `03-archive/` | what retired, kept for the record |
 
